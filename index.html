@@ -233,6 +233,8 @@
     .wa-float:hover{transform:scale(1.12);box-shadow:0 6px 28px rgba(37,211,102,0.7);}
     .wa-float svg{width:32px;height:32px;fill:#fff;}
     @keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.5);}50%{box-shadow:0 4px 32px rgba(37,211,102,0.85),0 0 0 8px rgba(37,211,102,0.15);}}
+    
+      @keyframes marquee-logos{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     </style>
 </head>
 <body>
@@ -295,9 +297,9 @@
     const PROGRAMS = [
       { icon: <svg viewBox="0 0 64 64" width="52" height="52" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ng1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#38bdf8"/><stop offset="100%" stopColor="#0369a1"/></linearGradient></defs><rect x="8" y="8" width="48" height="48" rx="14" fill="url(#ng1)" opacity="0.15"/><path d="M32 14 C24 14 18 20 18 28 C18 38 32 50 32 50 C32 50 46 38 46 28 C46 20 40 14 32 14Z" fill="url(#ng1)" opacity="0.9"/><rect x="28" y="22" width="8" height="14" rx="2" fill="white"/><rect x="25" y="26" width="14" height="6" rx="2" fill="white" opacity="0.7"/></svg>, name:"Shantha College of Nursing",    page:"academics:nursing",        tags:["B.Sc Nursing","P.B.B.Sc Nursing","M.Sc Nursing","Diploma"],  desc:"Comprehensive nursing programs affiliated with RGUHS and recognized by INC and KSNC." },
       { icon: <svg viewBox="0 0 64 64" width="52" height="52" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="pg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#f97316"/><stop offset="100%" stopColor="#be123c"/></linearGradient></defs><rect x="8" y="8" width="48" height="48" rx="14" fill="url(#pg1)" opacity="0.12"/><ellipse cx="32" cy="32" rx="14" ry="9" transform="rotate(-40 32 32)" fill="url(#pg1)"/><ellipse cx="32" cy="32" rx="14" ry="9" transform="rotate(-40 32 32)" fill="white" opacity="0.25"/><rect x="29" y="20" width="6" height="24" rx="3" fill="white" opacity="0.9" transform="rotate(-40 32 32)"/></svg>, name:"Shantha College of Pharmacy",   page:"academics:pharmacy",       tags:["D.Pharm","B.Pharm"],                                          desc:"Quality pharmacy education with state-of-the-art labs recognized by PCI." },
-      { icon: <svg viewBox="0 0 64 64" width="52" height="52" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ptg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#a78bfa"/><stop offset="100%" stopColor="#7c3aed"/></linearGradient></defs><rect x="8" y="8" width="48" height="48" rx="14" fill="url(#ptg1)" opacity="0.12"/><circle cx="32" cy="18" r="6" fill="url(#ptg1)"/><path d="M26 26 Q20 34 22 44 Q26 50 32 50 Q38 50 42 44 Q44 34 38 26 Q35 22 32 22 Q29 22 26 26Z" fill="url(#ptg1)" opacity="0.85"/><path d="M26 34 L38 34" stroke="white" strokeWidth="2.5" strokeLinecap="round"/><path d="M28 38 L36 38" stroke="white" strokeWidth="2" strokeLinecap="round" opacity="0.7"/></svg>, name:"College of Physiotherapy",      page:"academics:physiotherapy",  tags:["BPT","MPT"],                                                  desc:"Evidence-based physiotherapy training with clinical exposure at our hospital." },
-      { icon: <svg viewBox="0 0 64 64" width="52" height="52" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ag1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#34d399"/><stop offset="100%" stopColor="#0891b2"/></linearGradient></defs><rect x="8" y="8" width="48" height="48" rx="14" fill="url(#ag1)" opacity="0.12"/><circle cx="32" cy="24" r="8" fill="url(#ag1)" opacity="0.9"/><rect x="18" y="35" width="28" height="4" rx="2" fill="url(#ag1)"/><rect x="20" y="42" width="6" height="10" rx="2" fill="url(#ag1)" opacity="0.7"/><rect x="29" y="42" width="6" height="10" rx="2" fill="url(#ag1)" opacity="0.7"/><rect x="38" y="42" width="6" height="10" rx="2" fill="url(#ag1)" opacity="0.7"/></svg>, name:"Allied Health Sciences",        page:"academics:allied",         tags:["MLT","Radiology","OTT","Optometry"],                          desc:"Specialized programs preparing students for modern diagnostic and therapeutic roles." },
-      { icon: <svg viewBox="0 0 64 64" width="52" height="52" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="pmg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#60a5fa"/><stop offset="100%" stopColor="#4f46e5"/></linearGradient></defs><rect x="8" y="8" width="48" height="48" rx="14" fill="url(#pmg1)" opacity="0.12"/><circle cx="32" cy="26" r="9" stroke="url(#pmg1)" strokeWidth="3" fill="none"/><path d="M14 40 Q18 32 24 34 Q28 36 32 34 Q36 32 40 34 Q46 36 50 40" stroke="url(#pmg1)" strokeWidth="3" strokeLinecap="round" fill="none"/><circle cx="32" cy="26" r="3" fill="url(#pmg1)"/></svg>, name:"Para Medical Sciences",         page:"academics:paramedical",    tags:["DMLT","DOTT","DRT","DMRIT"],                                  desc:"Diploma programs in paramedical sciences with hands-on hospital training." },
+      { icon: <svg viewBox="0 0 64 64" width="52" height="52" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ptg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#a78bfa"/><stop offset="100%" stopColor="#7c3aed"/></linearGradient></defs><rect x="8" y="8" width="48" height="48" rx="14" fill="url(#ptg1)" opacity="0.12"/><circle cx="32" cy="18" r="6" fill="url(#ptg1)"/><path d="M26 26 Q20 34 22 44 Q26 50 32 50 Q38 50 42 44 Q44 34 38 26 Q35 22 32 22 Q29 22 26 26Z" fill="url(#ptg1)" opacity="0.85"/><path d="M26 34 L38 34" stroke="white" strokeWidth="2.5" strokeLinecap="round"/><path d="M28 38 L36 38" stroke="white" strokeWidth="2" strokeLinecap="round" opacity="0.7"/></svg>, name:"Shantha College of Physiotherapy",      page:"academics:physiotherapy",  tags:["BPT","MPT"],                                                  desc:"Evidence-based physiotherapy training with clinical exposure at our hospital." },
+      { icon: <svg viewBox="0 0 64 64" width="52" height="52" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ag1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#34d399"/><stop offset="100%" stopColor="#0891b2"/></linearGradient></defs><rect x="8" y="8" width="48" height="48" rx="14" fill="url(#ag1)" opacity="0.12"/><circle cx="32" cy="24" r="8" fill="url(#ag1)" opacity="0.9"/><rect x="18" y="35" width="28" height="4" rx="2" fill="url(#ag1)"/><rect x="20" y="42" width="6" height="10" rx="2" fill="url(#ag1)" opacity="0.7"/><rect x="29" y="42" width="6" height="10" rx="2" fill="url(#ag1)" opacity="0.7"/><rect x="38" y="42" width="6" height="10" rx="2" fill="url(#ag1)" opacity="0.7"/></svg>, name:"Shantha College of Allied Health Sciences",        page:"academics:allied",         tags:["MLT","Radiology","OTT","Optometry"],                          desc:"Specialized programs preparing students for modern diagnostic and therapeutic roles." },
+      { icon: <svg viewBox="0 0 64 64" width="52" height="52" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="pmg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#60a5fa"/><stop offset="100%" stopColor="#4f46e5"/></linearGradient></defs><rect x="8" y="8" width="48" height="48" rx="14" fill="url(#pmg1)" opacity="0.12"/><circle cx="32" cy="26" r="9" stroke="url(#pmg1)" strokeWidth="3" fill="none"/><path d="M14 40 Q18 32 24 34 Q28 36 32 34 Q36 32 40 34 Q46 36 50 40" stroke="url(#pmg1)" strokeWidth="3" strokeLinecap="round" fill="none"/><circle cx="32" cy="26" r="3" fill="url(#pmg1)"/></svg>, name:"Shantha College of Para Medical Sciences",         page:"academics:paramedical",    tags:["DMLT","DOTT","DRT","DMRIT"],                                  desc:"Diploma programs in paramedical sciences with hands-on hospital training." },
       { icon: <svg viewBox="0 0 64 64" width="52" height="52" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="vg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#fbbf24"/><stop offset="100%" stopColor="#b45309"/></linearGradient></defs><rect x="8" y="8" width="48" height="48" rx="14" fill="url(#vg1)" opacity="0.12"/><path d="M16 44 L32 16 L48 44Z" fill="url(#vg1)" opacity="0.9"/><rect x="22" y="44" width="20" height="5" rx="2" fill="url(#vg1)"/><path d="M26 36 L38 36" stroke="white" strokeWidth="2" strokeLinecap="round"/><path d="M29 30 L35 30" stroke="white" strokeWidth="2" strokeLinecap="round"/></svg>, name:"Shantha Vidyaniketan",          page:"academics:vidyaniketan",   tags:["Pre-University","Science Stream"],                            desc:"Pre-university college preparing students for competitive healthcare admissions." },
     ];
 
@@ -339,8 +341,8 @@
           { label:"Shantha College of Nursing",       route:"academics:nursing" },
           { label:"Shantha College of Pharmacy",      route:"academics:pharmacy" },
           { label:"Shantha College of Physiotherapy", route:"academics:physiotherapy" },
-          { label:"Allied Health Sciences",           route:"academics:allied" },
-          { label:"Para Medical Sciences",            route:"academics:paramedical" },
+          { label:"Shantha College of Allied Health Sciences", route:"academics:allied" },
+          { label:"Shantha College of Para Medical Sciences",  route:"academics:paramedical" },
           { label:"Shantha Vidyaniketan",             route:"academics:vidyaniketan" },
         ]},
         { label:"Campus Life", key:"campus", sub:[
@@ -552,7 +554,6 @@
         'https://www.instagram.com/reel/DRemuZUk7r6/',
         'https://www.instagram.com/reel/DReWgDakwNI/',
         'https://www.instagram.com/reel/DRQxKPwk6N3/',
-        'https://www.instagram.com/reel/DRMD-dWkyni/',
       ];
       return (
         <section style={{background:'var(--navy)',padding:'72px 0'}}>
@@ -562,7 +563,7 @@
               <h2 className="section-title" style={{color:'#fff',marginBottom:8}}>Campus Life @ SGI</h2>
               <p style={{color:'rgba(255,255,255,0.5)',fontSize:'0.88rem',letterSpacing:'0.06em'}}>Admissions Open &bull; Student Life &bull; Academic Excellence</p>
             </div>
-            <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:16,marginBottom:32,alignItems:'start'}}>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:20,marginBottom:32,alignItems:'start'}}>
               {posts.map((url,i) => (
                 <blockquote key={i} className="instagram-media"
                   data-instgrm-captioned
@@ -685,7 +686,7 @@
               <div className="section-label" style={{justifyContent:'center',color:'var(--gold2)'}}>Prospectus</div>
               <h2 className="section-title" style={{color:'#fff',margin:'0 auto 16px'}}>Download Our Prospectus</h2>
               <p style={{color:'rgba(255,255,255,0.6)',fontSize:'1rem',marginBottom:32}}>Get detailed information about our programs, fee structure, facilities, and admission process.</p>
-              <a href="https://shanthainstitution.edu.in/" target="_blank" className="btn-gold" style={{fontSize:'1rem',padding:'16px 36px'}}>📄 Download Prospectus →</a>
+              <a href="./SGI-Prospectus-2025-1-1.pdf" download="SGI-Prospectus-2025.pdf" className="btn-gold" style={{fontSize:'1rem',padding:'16px 36px'}}>📄 Download Prospectus →</a>
             </div>
           </div>
         </section>
@@ -717,8 +718,8 @@
                     {label:'Shantha College of Nursing',      page:'academics:nursing'},
                     {label:'Shantha College of Pharmacy',     page:'academics:pharmacy'},
                     {label:'Shantha College of Physiotherapy',page:'academics:physiotherapy'},
-                    {label:'Allied Health Sciences',          page:'academics:allied'},
-                    {label:'Para Medical Sciences',           page:'academics:paramedical'},
+                    {label:'Shantha College of Allied Health Sciences',page:'academics:allied'},
+                    {label:'Shantha College of Para Medical Sciences', page:'academics:paramedical'},
                     {label:'Shantha Vidyaniketan',            page:'academics:vidyaniketan'},
                   ].map(p => <a key={p.page} onClick={() => setPage(p.page)} style={{cursor:'pointer'}}>{p.label}</a>)}
               </div>
@@ -727,8 +728,7 @@
                 <p style={{fontSize:'0.82rem',color:'rgba(255,255,255,0.55)',lineHeight:1.7}}>
                   Shantha Group of Institutions<br/>
                   Chikkaballapura, Karnataka<br/>
-                  📞 9880353469<br/>
-                  ✉️ enquiry@shanthainstitution.edu.in
+                  <span style={{display:'flex',alignItems:'center',gap:6,marginBottom:4}}><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>9880353469</span><span style={{display:'flex',alignItems:'center',gap:6}}><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>enquiry@shanthainstitution.edu.in</span>
                 </p>
               </div>
             </div>
@@ -1830,7 +1830,7 @@ function AcademicsPage({ subTab = 'overview', setPage }) {
     // ─────────────────────────────────────────────────────────────────────────
     function PharmacyPage({ setPage }) {
       const [activeTab,      setActiveTab]      = React.useState('about');
-      const [activeCourse,   setActiveCourse]   = React.useState(null);
+      const [activeCourse,   setActiveCourse]   = React.useState('dpharm');
       const [courseDropOpen, setCourseDropOpen] = React.useState(false);
       const [activeEvent,    setActiveEvent]    = React.useState(null);
       const [lb, setLb]              = React.useState(null);
@@ -2028,8 +2028,8 @@ function AcademicsPage({ subTab = 'overview', setPage }) {
         </div>
       );
 
-      const tabs = ['about','courses','facilities','faculties','events','conference'];
-      const tabLabels = {'about':'About Us','courses':'Courses','facilities':'Facilities','faculties':'Faculties','events':'Events','conference':'National Conference'};
+      const tabs = ['about','courses','faculties','events','conference'];
+      const tabLabels = {'about':'About Us','courses':'Courses','faculties':'Faculties','events':'Events','conference':'National Conference'};
 
       return (
         <>
@@ -2358,31 +2358,7 @@ function AcademicsPage({ subTab = 'overview', setPage }) {
           {/* ══════════════════════════════════════════
               FACILITIES TAB
           ══════════════════════════════════════════ */}
-          {activeTab === 'facilities' && (
-            <section className="section">
-              <div className="container">
-                {FAC_DATA.map((fac,fi)=>(
-                  <div key={fi} style={{marginBottom:52}}>
-                    <div style={{display:'flex',alignItems:'center',gap:12,marginBottom:16}}>
-                      <div style={{width:4,height:32,background:CRIMSON,borderRadius:2,flexShrink:0}}></div>
-                      <span style={{fontSize:'1.3rem'}}>{fac.icon}</span>
-                      <h2 style={{fontFamily:"'Playfair Display',serif",fontSize:'1.5rem',fontWeight:700,color:'var(--navy)'}}>{fac.title}</h2>
-                    </div>
-                    <p style={{color:'var(--muted)',lineHeight:1.8,fontSize:'0.95rem',maxWidth:760,marginBottom:20}}>{fac.desc}</p>
-                    {/* Responsive grid — auto-fill so no empty gaps */}
-                    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(260px,1fr))',gap:14}}>
-                      {fac.photos.map((src,pi)=>(
-                        <div key={pi} style={{borderRadius:10,overflow:'hidden',boxShadow:'0 4px 14px rgba(11,30,61,0.1)',height:'220px'}}>
-                          <img src={src} alt={fac.title+' '+(pi+1)} style={{width:'100%',height:'100%',objectFit:'cover',display:'block',cursor:'zoom-in'}} onClick={()=>setLb(src)}/>
-                        </div>
-                      ))}
-                    </div>
-                    {fi < FAC_DATA.length-1 && <div style={{borderBottom:'1px solid var(--border)',marginTop:40}}></div>}
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
+          
 
           {/* ══════════════════════════════════════════
               FACULTIES TAB
@@ -4402,12 +4378,7 @@ function AcademicsPage({ subTab = 'overview', setPage }) {
 
             <section style={{padding:'48px 0 80px',background:'#fafafa'}}>
               <div className="container">
-                <div style={{marginBottom:36}}>
-                  <div className="section-label">Gallery</div>
-                  <h2 className="section-title">Photo Gallery</h2>
-                  <p style={{color:'var(--muted)',maxWidth:620,lineHeight:1.75,marginBottom:8}}>
-                    A visual journey through campus life, events, clinical training, and student achievements at SGI.
-                  </p>
+                <div style={{marginBottom:28}}>
                   <span style={{fontSize:'0.78rem',color:'var(--muted)',background:'#fff',border:'1px solid var(--border)',borderRadius:20,padding:'3px 12px'}}>
                     {PHOTOS.length} photos · Click any to enlarge
                   </span>
@@ -4471,11 +4442,11 @@ function AcademicsPage({ subTab = 'overview', setPage }) {
               <div style={{background:'var(--off)',borderBottom:'1px solid var(--border)',paddingTop:48,paddingBottom:48}}>
                 <div className="container">
                   <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:0,borderRadius:16,overflow:'hidden',border:'1px solid var(--border)',boxShadow:'0 4px 20px rgba(0,0,0,0.10)',alignItems:'stretch'}}>
-                    <div style={{height:'100%',minHeight:320,overflow:'hidden'}}>
+                    <div style={{minHeight:340,background:'#eef2f7',display:'flex',alignItems:'center',justifyContent:'center',overflow:'hidden'}}>
                       <img
                         src={B+'2025/06/facility.jpg'}
                         alt="SGI Facilities"
-                        style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center',display:'block'}}
+                        style={{width:'100%',height:'auto',objectFit:'contain',display:'block'}}
                       />
                     </div>
                     <div style={{padding:'52px 44px',display:'flex',flexDirection:'column',justifyContent:'center',background:'#0b1e3d'}}>
@@ -4723,6 +4694,7 @@ function AcademicsPage({ subTab = 'overview', setPage }) {
         { key:'placement',   label:'Placement',    icon:'🏢' },
         { key:'fdp',         label:'FDP',          icon:'📄' },
         { key:'hr',          label:'HR Policies',  icon:'📜' },
+        { key:'career',      label:'Career / Jobs',icon:'💼' },
       ];
 
       // ── TAB: APPLY NOW ────────────────────────────────────────────────────────
@@ -5023,11 +4995,14 @@ function AcademicsPage({ subTab = 'overview', setPage }) {
             {/* Placement Photos */}
             <div style={{background:'var(--off)',border:'1px solid var(--border)',borderRadius:14,padding:'24px 28px'}}>
               <h3 style={{fontWeight:800,color:'var(--navy)',marginBottom:16,fontSize:'1rem'}}>Placement Highlights</h3>
-              <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-                {placementImgs.map((src,i)=>(
-                  <img key={i} src={src} alt="Placement" referrerPolicy="no-referrer"
-                    style={{width:130,height:100,objectFit:'cover',borderRadius:10,border:'2px solid #fff',boxShadow:'0 2px 8px rgba(0,0,0,0.1)'}}/>
-                ))}
+              <div style={{overflow:'hidden',width:'100%',position:'relative'}}>
+                <div style={{display:'flex',gap:24,animation:'marquee-logos 22s linear infinite',width:'max-content'}}>
+                  {[].concat(placementImgs,placementImgs).map(function(src,i){
+                    return React.createElement('div',{key:i,style:{background:'#fff',borderRadius:10,border:'1px solid #e5e7eb',padding:'10px 20px',display:'flex',alignItems:'center',justifyContent:'center',height:80,minWidth:160,flexShrink:0}},
+                      React.createElement('img',{src:src,alt:'Placement',referrerPolicy:'no-referrer',style:{maxWidth:140,maxHeight:60,objectFit:'contain',display:'block'}})
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
@@ -5154,6 +5129,110 @@ function AcademicsPage({ subTab = 'overview', setPage }) {
         );
       }
 
+      function CareerTab() {
+        var benefits = [
+          {label:'Professional and supportive work environment'},
+          {label:'Opportunities for career growth and development'},
+          {label:'Collaborative academic and healthcare culture'},
+          {label:'Modern infrastructure and learning facilities'},
+        ];
+        var openings = [
+          {title:'Office Executive',        dept:'Administration'},
+          {title:'Senior Office Executive', dept:'Administration'},
+          {title:'Tele Caller',             dept:'Marketing'},
+          {title:'Counsellor',              dept:'Student Affairs'},
+          {title:'Admission Director',      dept:'Admissions'},
+          {title:'Principal',               dept:'Allied Health Sciences'},
+          {title:'Principal',               dept:'Physiotherapy'},
+        ];
+        return (
+          React.createElement('div', {style:{maxWidth:900,margin:'0 auto'}},
+            React.createElement('div', {style:{background:'linear-gradient(135deg,#0b1e3d 0%,#1a3a6b 100%)',borderRadius:20,padding:'52px 48px',marginBottom:32,position:'relative',overflow:'hidden'}},
+              React.createElement('div',{style:{position:'absolute',top:-60,right:-60,width:240,height:240,background:'rgba(200,146,42,0.07)',borderRadius:'50%',pointerEvents:'none'}}),
+              React.createElement('div',{style:{position:'absolute',bottom:-40,left:-40,width:160,height:160,background:'rgba(200,146,42,0.05)',borderRadius:'50%',pointerEvents:'none'}}),
+              React.createElement('div',{style:{position:'relative',zIndex:1}},
+                React.createElement('span',{style:{display:'inline-block',background:'rgba(200,146,42,0.18)',border:'1px solid rgba(200,146,42,0.35)',borderRadius:24,padding:'5px 18px',fontSize:'0.72rem',color:'#c8922a',fontWeight:700,letterSpacing:'0.1em',textTransform:'uppercase',marginBottom:20}},'Careers at SGI'),
+                React.createElement('h2',{style:{fontFamily:"'Playfair Display',serif",fontSize:'2.2rem',fontWeight:700,color:'#fff',marginBottom:16,lineHeight:1.3}},'Build Your Career With Us'),
+                React.createElement('p',{style:{color:'rgba(255,255,255,0.72)',lineHeight:1.85,maxWidth:640,fontSize:'0.97rem',marginBottom:10}},'At Shantha Group of Institutions, dedicated professionals are the foundation of quality education and healthcare. We seek passionate individuals committed to academic excellence and patient care.'),
+                React.createElement('p',{style:{color:'rgba(255,255,255,0.55)',lineHeight:1.85,maxWidth:620,fontSize:'0.92rem'}},'If you are enthusiastic about making a meaningful impact, we invite you to explore opportunities with us.')
+              )
+            ),
+            React.createElement('div',{style:{background:'#fff',borderRadius:16,border:'1px solid #e8edf5',padding:'36px 40px',marginBottom:28,boxShadow:'0 2px 16px rgba(11,30,61,0.05)'}},
+              React.createElement('div',{style:{display:'flex',alignItems:'center',gap:12,marginBottom:24}},
+                React.createElement('div',{style:{width:40,height:40,background:'#f0f4ff',borderRadius:10,display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}},
+                  React.createElement('svg',{width:20,height:20,viewBox:'0 0 24 24',fill:'none',stroke:'#1a3a6b',strokeWidth:2,strokeLinecap:'round',strokeLinejoin:'round'},
+                    React.createElement('path',{d:'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'})
+                  )
+                ),
+                React.createElement('h3',{style:{fontFamily:"'Playfair Display',serif",fontSize:'1.25rem',fontWeight:700,color:'var(--navy)',margin:0}},'Why Work With Us')
+              ),
+              React.createElement('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:14}},
+                benefits.map(function(b,i){
+                  return React.createElement('div',{key:i,style:{display:'flex',alignItems:'flex-start',gap:14,background:'#f7f9fc',borderRadius:12,padding:'16px 18px',border:'1px solid #eef1f7'}},
+                    React.createElement('div',{style:{width:32,height:32,background:'#e8f5e9',borderRadius:8,display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0,marginTop:1}},
+                      React.createElement('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'none',stroke:'#2e7d32',strokeWidth:2.2,strokeLinecap:'round',strokeLinejoin:'round'},
+                        React.createElement('path',{d:'M5 13l4 4L19 7'})
+                      )
+                    ),
+                    React.createElement('span',{style:{color:'#1e293b',fontSize:'0.91rem',lineHeight:1.65,fontWeight:500}},b.label)
+                  );
+                })
+              )
+            ),
+            React.createElement('div',{style:{background:'#fff',borderRadius:16,border:'1px solid #e8edf5',padding:'36px 40px',boxShadow:'0 2px 16px rgba(11,30,61,0.05)'}},
+              React.createElement('div',{style:{display:'flex',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:12,marginBottom:8}},
+                React.createElement('div',{style:{display:'flex',alignItems:'center',gap:12}},
+                  React.createElement('div',{style:{width:40,height:40,background:'#fff8e7',borderRadius:10,display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}},
+                    React.createElement('svg',{width:20,height:20,viewBox:'0 0 24 24',fill:'none',stroke:'#b45309',strokeWidth:2,strokeLinecap:'round',strokeLinejoin:'round'},
+                      React.createElement('rect',{x:2,y:7,width:20,height:14,rx:2,ry:2}),
+                      React.createElement('path',{d:'M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2'})
+                    )
+                  ),
+                  React.createElement('h3',{style:{fontFamily:"'Playfair Display',serif",fontSize:'1.25rem',fontWeight:700,color:'var(--navy)',margin:0}},'Current Openings')
+                ),
+                React.createElement('span',{style:{background:'#fef3c7',color:'#92400e',borderRadius:20,padding:'4px 14px',fontSize:'0.78rem',fontWeight:600}},openings.length+' Positions')
+              ),
+              React.createElement('p',{style:{color:'#64748b',fontSize:'0.88rem',marginBottom:24,marginLeft:52}},'We are actively hiring for the following roles:'),
+              React.createElement('div',{style:{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12,marginBottom:28}},
+                openings.map(function(job,i){
+                  return React.createElement('div',{key:i,style:{display:'flex',alignItems:'center',gap:14,background:'#f8fafc',borderRadius:12,padding:'16px 18px',border:'1px solid #e8edf5'}},
+                    React.createElement('div',{style:{width:38,height:38,background:'linear-gradient(135deg,#0b1e3d,#1a3a6b)',borderRadius:9,display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}},
+                      React.createElement('svg',{width:17,height:17,viewBox:'0 0 24 24',fill:'none',stroke:'#c8922a',strokeWidth:2,strokeLinecap:'round',strokeLinejoin:'round'},
+                        React.createElement('rect',{x:2,y:7,width:20,height:14,rx:2,ry:2}),
+                        React.createElement('path',{d:'M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2'})
+                      )
+                    ),
+                    React.createElement('div',null,
+                      React.createElement('p',{style:{color:'#0f172a',fontWeight:600,fontSize:'0.92rem',marginBottom:2}},job.title),
+                      React.createElement('p',{style:{color:'#64748b',fontSize:'0.78rem',margin:0}},job.dept)
+                    )
+                  );
+                })
+              ),
+              React.createElement('div',{style:{background:'linear-gradient(135deg,#0b1e3d 0%,#1a3a6b 100%)',borderRadius:14,padding:'22px 28px',display:'flex',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:14}},
+                React.createElement('div',{style:{display:'flex',alignItems:'center',gap:14}},
+                  React.createElement('div',{style:{width:44,height:44,background:'rgba(200,146,42,0.2)',borderRadius:10,display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}},
+                    React.createElement('svg',{width:22,height:22,viewBox:'0 0 24 24',fill:'none',stroke:'#c8922a',strokeWidth:2,strokeLinecap:'round',strokeLinejoin:'round'},
+                      React.createElement('path',{d:'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'})
+                    )
+                  ),
+                  React.createElement('div',null,
+                    React.createElement('p',{style:{color:'#fff',fontWeight:600,fontSize:'0.97rem',marginBottom:2}},'Ready to Apply?'),
+                    React.createElement('p',{style:{color:'rgba(255,255,255,0.6)',fontSize:'0.85rem',margin:0}},'Send your resume to our HR team')
+                  )
+                ),
+                React.createElement('a',{href:'mailto:enquiry@shanthainstitution.edu.in',style:{background:'linear-gradient(135deg,#c8922a,#e6a830)',color:'#fff',borderRadius:10,padding:'12px 28px',fontWeight:700,fontSize:'0.92rem',textDecoration:'none',display:'flex',alignItems:'center',gap:8,boxShadow:'0 4px 12px rgba(200,146,42,0.35)'}},
+                  'Apply Now',
+                  React.createElement('svg',{width:16,height:16,viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2.5,strokeLinecap:'round',strokeLinejoin:'round'},
+                    React.createElement('path',{d:'M5 12h14M12 5l7 7-7 7'})
+                  )
+                )
+              )
+            )
+          )
+        );
+      }
+
       return (
         <>
           {/* Page Hero */}
@@ -5173,6 +5252,7 @@ function AcademicsPage({ subTab = 'overview', setPage }) {
               {activeTab==='placement'   && <PlacementTab/>}
               {activeTab==='fdp'         && <FDPTab/>}
               {activeTab==='hr'          && <HRTab/>}
+              {activeTab==='career'       && <CareerTab/>}
             </div>
           </section>
         </>
@@ -5387,9 +5467,9 @@ function AcademicsPage({ subTab = 'overview', setPage }) {
            approvals:['Pharmacy Council of India (PCI), New Delhi','RGUHS, Bangalore','Government of Karnataka','All India Council for Technical Education (AICTE)']},
           {key:'physio',     label:'Physiotherapy',   color:'#7c3aed',
            approvals:['RGUHS, Bangalore','Government of Karnataka','Indian Association of Physiotherapists (IAP)']},
-          {key:'allied',     label:'Allied Health Sci',color:'#b45309',
+          {key:'allied',     label:'Allied Health Sciences',color:'#b45309',
            approvals:['RGUHS, Bangalore','Government of Karnataka — Medical Education Department','Para Medical Board of Karnataka']},
-          {key:'paramedical',label:'Paramedical Sci', color:'#be185d',
+          {key:'paramedical',label:'Paramedical Sciences', color:'#be185d',
            approvals:['Para Medical Council of India','RGUHS, Bangalore','Government of Karnataka']},
         ];
 
@@ -5428,7 +5508,7 @@ function AcademicsPage({ subTab = 'overview', setPage }) {
             </div>
             {colleges.filter(c=>c.key===collTabs).map(c=>(
               <div key={c.key} style={{background:'#fff',border:'1px solid var(--border)',borderRadius:12,padding:'20px 24px'}}>
-                <h4 style={{fontWeight:800,color:c.color,marginBottom:16,fontSize:'0.95rem'}}>Shantha College of {c.label === 'Nursing' ? 'Nursing' : c.label === 'Pharmacy' ? 'Pharmacy' : c.label === 'Physiotherapy' ? 'Physiotherapy' : c.label === 'Allied Health Sci' ? 'Allied Health Sciences' : 'Paramedical Sciences'}</h4>
+                <h4 style={{fontWeight:800,color:c.color,marginBottom:16,fontSize:'0.95rem'}}>Shantha College of {c.label === 'Nursing' ? 'Nursing' : c.label === 'Pharmacy' ? 'Pharmacy' : c.label === 'Physiotherapy' ? 'Physiotherapy' : c.label === 'Allied Health Sciences' ? 'Allied Health Sciences' : 'Paramedical Sciences'}</h4>
                 {c.approvals.map((a,i)=>(
                   <div key={i} style={{display:'flex',alignItems:'center',gap:12,padding:'10px 0',borderBottom:i<c.approvals.length-1?'1px solid var(--border)':'none'}}>
                     <span style={{color:c.color,flexShrink:0}}><IcoCheck/></span>
@@ -5629,9 +5709,9 @@ function AcademicsPage({ subTab = 'overview', setPage }) {
            approvals:['Pharmacy Council of India (PCI), New Delhi','RGUHS, Bangalore','Government of Karnataka','All India Council for Technical Education (AICTE)']},
           {key:'physio',     label:'Physiotherapy',   color:'#7c3aed',
            approvals:['RGUHS, Bangalore','Government of Karnataka','Indian Association of Physiotherapists (IAP)']},
-          {key:'allied',     label:'Allied Health Sci',color:'#b45309',
+          {key:'allied',     label:'Allied Health Sciences',color:'#b45309',
            approvals:['RGUHS, Bangalore','Government of Karnataka — Medical Education Department','Para Medical Board of Karnataka']},
-          {key:'paramedical',label:'Paramedical Sci', color:'#be185d',
+          {key:'paramedical',label:'Paramedical Sciences', color:'#be185d',
            approvals:['Para Medical Council of India','RGUHS, Bangalore','Government of Karnataka']},
         ];
 
@@ -5670,7 +5750,7 @@ function AcademicsPage({ subTab = 'overview', setPage }) {
             </div>
             {colleges.filter(c=>c.key===collTabs).map(c=>(
               <div key={c.key} style={{background:'#fff',border:'1px solid var(--border)',borderRadius:12,padding:'20px 24px'}}>
-                <h4 style={{fontWeight:800,color:c.color,marginBottom:16,fontSize:'0.95rem'}}>Shantha College of {c.label === 'Nursing' ? 'Nursing' : c.label === 'Pharmacy' ? 'Pharmacy' : c.label === 'Physiotherapy' ? 'Physiotherapy' : c.label === 'Allied Health Sci' ? 'Allied Health Sciences' : 'Paramedical Sciences'}</h4>
+                <h4 style={{fontWeight:800,color:c.color,marginBottom:16,fontSize:'0.95rem'}}>Shantha College of {c.label === 'Nursing' ? 'Nursing' : c.label === 'Pharmacy' ? 'Pharmacy' : c.label === 'Physiotherapy' ? 'Physiotherapy' : c.label === 'Allied Health Sciences' ? 'Allied Health Sciences' : 'Paramedical Sciences'}</h4>
                 {c.approvals.map((a,i)=>(
                   <div key={i} style={{display:'flex',alignItems:'center',gap:12,padding:'10px 0',borderBottom:i<c.approvals.length-1?'1px solid var(--border)':'none'}}>
                     <span style={{color:c.color,flexShrink:0}}><IcoCheck/></span>
